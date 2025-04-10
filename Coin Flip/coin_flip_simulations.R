@@ -32,18 +32,29 @@ results <- data.frame(
 )
 
 #Some visualization
-plot_static <- ggplot(results, aes(x=Flip,y=Proportion))+ 
-geom_line(color="blue", alpha=0.7, linewidth=0.5)+
-geom_ribbon(aes(ymin=Lower_CI,ymax=Upper_CI), fill="gray",alpha=0.3)+
-geom_hline(yintercept = 0.5, linetype = "dashed", color="red")+
-labs(
-    title="Law of Large Numbers: Coin Flip Convergence",
-    subtitle = paste("Proportion of heads over",n_flips ,"flips."),
-    x= "Number of flips",
-    y= "Proportion of heads"
-)+
-ylim(0,1) + theme_minimal()
-
+ plot_static <- ggplot(results, aes(x = Flip, y = Proportion))+ 
+  geom_line(color = "cyan", alpha = 0.9, linewidth = 0.7)+
+  geom_ribbon(aes(ymin = Lower_CI, ymax = Upper_CI),fill = "magenta", alpha = 0.2) +
+  geom_hline(yintercept = 0.5, linetype = "dashed",color = "yellow", linewidth = 0.7) +
+  labs(
+    title = "Law of Large Numbers: Coin Flip Convergence",
+    subtitle = paste("Proportion of heads over", n_flips, "flips."),
+    x ="Number of flips",
+    y ="Proportion of heads"
+  ) +
+  ylim(0, 1)+
+  
+  theme_minimal() +
+  theme(
+    plot.background =element_rect(fill ="black"),
+    panel.background =element_rect(fill ="black"),
+    text = element_text(color ="white", size =12), 
+    axis.text = element_text(color ="white"),        
+    panel.grid.major =element_line(color ="gray30"),  
+    panel.grid.minor =element_blank(),
+    plot.title =element_text(face="bold",hjust=0.5),  
+    plot.subtitle =element_text(hjust=0.5)               
+  )
 print(plot_static)
 
 
